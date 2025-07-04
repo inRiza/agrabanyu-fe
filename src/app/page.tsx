@@ -1,4 +1,5 @@
 import Hero from "@/landing-page/hero"
+import Introduce from '@/landing-page/introduce'
 import { Navbar } from "@/components/navbar/navbar"
 
 const Main = () => {
@@ -6,6 +7,7 @@ const Main = () => {
     <div className="guide-main">
       <Navbar/>
       <Hero/>
+      <Introduce/>
     </div>
   )
 }
