@@ -1,24 +1,51 @@
-import ScrollFloat from "@/components/ScrollFloat/ScrollFloat"
-import Carousel from "@/components/Carousel/Carousel"
+'use client';
+import { motion } from "framer-motion";
+import Carousel from "@/components/Carousel/Carousel";
 
 const Introduce = () => {
   return (
-    <div>
-        {/* Introducing text */}
-        <div className='flex justify-center mt-10'>
-            <ScrollFloat
-                animationDuration={1}
-                ease='back.inOut(2)'
-                scrollStart='center bottom+=50%'
-                scrollEnd='bottom bottom-=40%'
-                stagger={0.03}
-                textClassName="text-[100 px] font-bold shiny-text"
-                >
-                Find your best Investation
-            </ScrollFloat>
-        </div>
+    <div className="guide-main h-screen flex flex-col items-center justify-center mt-40">
+        <motion.p 
+            className="subtitle text-4xl text-center capitalize mb-16 shiny-text"
+            initial={{ 
+                opacity: 0, 
+                scale: 0.8, 
+                y: 50 
+            }}
+            animate={{ 
+                opacity: 1, 
+                scale: 1, 
+                y: 0 
+            }}
+            transition={{
+                delay: 0.5,
+                duration: 0.8,
+                type: "spring",
+                stiffness: 200,
+                damping: 20,
+            }}
+        >
+            find your best investment
+        </motion.p>
 
-        <div className='mt-10 flex justify-center'>
+        <motion.div 
+            className='flex justify-center'
+            initial={{ 
+                opacity: 0, 
+                y: 30 
+            }}
+            animate={{ 
+                opacity: 1, 
+                y: 0 
+            }}
+            transition={{
+                delay: 1.2,
+                duration: 0.8,
+                type: "spring",
+                stiffness: 200,
+                damping: 20,
+            }}
+        >
             <Carousel
                 baseWidth={1000}
                 autoplay={true}
@@ -27,7 +54,7 @@ const Introduce = () => {
                 loop={true}
                 round={false}
             />
-        </div>
+        </motion.div>
     </div>
   )
 }
