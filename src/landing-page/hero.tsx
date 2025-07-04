@@ -1,5 +1,3 @@
-
-
 const Hero = () => {
   return (
     <div className="guide-main h-screen flex flex-col items-center justify-center">
