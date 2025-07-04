@@ -181,6 +181,10 @@ body {
   .hover-bg-glow {
     @apply hover:shadow-[0px_0px_25px_0px_#83e95f] transition-all duration-500;
   }
+
+  .separator {
+    @apply my-8 h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-300 to-transparent dark:via-neutral-700;
+  }
 }
 
 @layer base {
