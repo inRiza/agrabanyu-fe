@@ -49,7 +49,7 @@ body {
   } */
 
   .guide-main {
-    @apply w-full px-20 py-4;
+    @apply w-full px-20;
   }
 
   .title {

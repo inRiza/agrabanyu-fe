@@ -8,7 +8,7 @@ export function Navbar() {
                 <a href="" className="hover:bg-black hover:rounded-lg hover:text-white px-4 py-2">Home</a>
                 <a href="" className="hover:bg-black hover:rounded-lg hover:text-white px-4 py-2">About</a>
                 <a href="" className="hover:bg-black hover:rounded-lg hover:text-white px-4 py-2">Contact</a>
-                <button className="button-main px-4 py-2">Login</button>
+                <button className="button-main px-4 py-2 font-light">Login</button>
             </div>
          </div>
     </div>
