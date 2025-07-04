@@ -14,10 +14,10 @@ const Hero = () => {
   return (
     <div className="guide-main h-screen flex flex-col items-center justify-center">
         <Spotlight></Spotlight>
-        <p className="title uppercase text-center px-50 shiny-text">
+        <p className="title uppercase text-center px-50 shiny-text relative z-10">
             invest on land or water with ease and secure
         </p>
-        <p className="mt-5 subtitle capitalize text-center px-50 shiny-text">
+        <p className="mt-5 subtitle capitalize text-center px-50 shiny-text relative z-10">
             invest easily using any cryptocurrency and helping you to secure your transaction using web3 technology
         </p>
         <div className="flex gap-6 relative z-20">
