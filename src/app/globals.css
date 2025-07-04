@@ -1,3 +1,4 @@
+
 @import "tailwindcss";
 
 :root {
@@ -5,6 +6,8 @@
   --foreground: #171717;
   --green-main: #83e95f;
   --grey-main: #313131;
+  --grey-secondary: #808080;
+  --grey-third: #e2e2e2;
 }
 
 @theme inline {
@@ -12,6 +15,8 @@
   --color-foreground: var(--foreground);
   --color-green-main: var(--green-main);
   --color-grey-main: var(--grey-main);
+  --color-grey-secondary: var(--grey-secondary);
+  --color-grey-third: var(--grey-third);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -49,6 +54,10 @@ body {
 
   .title {
     @apply text-6xl font-bold;
+  }
+
+  .subtitle {
+    @apply text-lg font-medium text-grey-third;
   }
 
   .shiny-text {

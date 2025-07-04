@@ -4,6 +4,7 @@ import { Navbar } from "@/components/navbar/navbar"
 const Main = () => {
   return (
     <div className="guide-main">
+
       <Navbar/>
       <Hero/>
     </div>
