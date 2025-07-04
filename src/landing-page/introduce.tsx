@@ -12,7 +12,7 @@ const Introduce = () => {
                 scrollStart='center bottom+=50%'
                 scrollEnd='bottom bottom-=40%'
                 stagger={0.03}
-                textClassName="text-[100 px] font-bold"
+                textClassName="text-[100 px] font-bold shiny-text"
                 >
                 Find your best Investation
             </ScrollFloat>
