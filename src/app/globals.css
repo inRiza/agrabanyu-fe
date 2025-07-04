@@ -3,13 +3,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --green-main: #95FB6F;
+  --green-main: #83e95f;
+  --grey-main: #313131;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-green-main: var(--green-main);
+  --color-grey-main: var(--grey-main);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -27,8 +29,52 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+@keyframes shine {
+  0% {
+    background-position: 100%;
+  }
+  100% {
+    background-position: -100%;
+  }
+}
+
 @layer components {
   /* .example {
     @apply styling;
   } */
+
+  .guide-main {
+    @apply w-full px-20 py-4;
+  }
+
+  .title {
+    @apply text-6xl font-bold;
+  }
+
+  .shiny-text {
+    color: #ffffffa4;
+    background: linear-gradient(
+      120deg,
+      rgba(255, 255, 255, 0) 40%,
+      rgba(255, 255, 255, 0.8) 50%,
+      rgba(255, 255, 255, 0) 60%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    display: inline-block;
+    animation: shine 5s linear infinite;
+  }
+
+  .button-main {
+    @apply bg-green-main text-black rounded-lg text-sm;
+  }
+
+  .button-submain {
+    @apply bg-grey-main text-white rounded-lg text-sm;
+  }
+
+  .hover-bg-glow {
+    @apply hover:shadow-[0px_0px_25px_0px_#83e95f] transition-all duration-500;
+  }
 }
