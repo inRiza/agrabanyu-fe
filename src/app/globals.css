@@ -179,7 +179,7 @@ body {
   }
 
   .hover-bg-glow {
-    @apply hover:shadow-[0px_0px_25px_0px_#83e95f] transition-all duration-500;
+    @apply hover:shadow-[0px_0px_25px_-5px_#83e95f] transition-all duration-500;
   }
 
   .separator {

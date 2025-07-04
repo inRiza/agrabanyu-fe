@@ -20,14 +20,19 @@ const Hero = () => {
         <p className="mt-5 subtitle capitalize text-center px-50 shiny-text relative z-10">
             invest easily using any cryptocurrency and helping you to secure your transaction using web3 technology
         </p>
-        <div className="flex gap-6 relative z-20">
+        <div className="flex gap-6 relative z-20 mt-10">
             <button 
                 onClick={handleGetStarted}
-                className="mt-10 button-main hover-bg-glow uppercase px-10 py-3 cursor-pointer hover:scale-105 transform"
+                className="button-main hover-bg-glow uppercase px-10 py-3 cursor-pointer"
             >
-                Get Started
+                get started
             </button>
-            <button className="mt-10 button-submain uppercase px-10 py-3 font-base cursor-pointer">Learn More</button>
+            <button
+                className="capitalize group/btn relative block h-12 px-10 py-3 rounded-md border-1 border-grey-main bg-transparent backdrop-blur-2xl font-normal text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] cursor-pointer"
+              >
+                learn more
+                <BottomGradient />
+              </button>
         </div>
         <Image 
             src="/landing-page/bg-farmer.png" 
@@ -44,3 +49,12 @@ const Hero = () => {
 }
 
 export default Hero
+
+const BottomGradient = () => {
+    return (
+      <>
+        <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-[#75c25a] to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100" />
+        <span className="absolute inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100" />
+      </>
+    );
+};

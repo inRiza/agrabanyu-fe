@@ -57,16 +57,16 @@ export default function LoginPage() {
             
             <form className="w-full" onSubmit={handleSubmit}>
               <LabelInputContainer className="mb-6">
-                <Label htmlFor="email">Your Full Name</Label>
-                <Input id="email" placeholder="John Doe" type="text" />
+                <Label htmlFor="name">Your Full Name</Label>
+                <Input id="name" name="name" placeholder="John Doe" type="text" />
               </LabelInputContainer>
               <LabelInputContainer className="mb-6">
                 <Label htmlFor="email">Email Address</Label>
-                <Input id="email" placeholder="agrabanyu@gmail.com" type="email" />
+                <Input id="email" name="email" placeholder="agrabanyu@gmail.com" type="email" />
               </LabelInputContainer>
               <LabelInputContainer className="mb-6">
                 <Label htmlFor="password">Password</Label>
-                <Input id="password" placeholder="••••••••" type="password" />
+                <Input id="password" name="password" placeholder="••••••••" type="password" />
               </LabelInputContainer>
               <button
                 disabled={isLoading}
@@ -87,7 +87,7 @@ export default function LoginPage() {
 const BottomGradient = () => {
   return (
     <>
-      <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-cyan-500 to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100" />
+      <span className="absolute inset-x-0 -bottom-px block h-px w-full bg-gradient-to-r from-transparent via-[#75c25a] to-transparent opacity-0 transition duration-500 group-hover/btn:opacity-100" />
       <span className="absolute inset-x-10 -bottom-px mx-auto block h-px w-1/2 bg-gradient-to-r from-transparent via-indigo-500 to-transparent opacity-0 blur-sm transition duration-500 group-hover/btn:opacity-100" />
     </>
   );
