@@ -1,7 +1,7 @@
 'use client';
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { Spotlight } from "@/components/ui/spotlight-new";
+import { Spotlight } from "@/components/effect/spotlight";
 
 const Hero = () => {
   const router = useRouter();
@@ -23,7 +23,7 @@ const Hero = () => {
         <div className="flex gap-6 relative z-20 mt-10">
             <button 
                 onClick={handleGetStarted}
-                className="button-main hover-bg-glow uppercase px-10 py-3 cursor-pointer"
+                className="button-main hover-bg-glow hover:-translate-y-1 capitalize font-semibold px-10 py-3 cursor-pointer"
             >
                 get started
             </button>
