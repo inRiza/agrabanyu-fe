@@ -30,7 +30,7 @@ export default function LoginPage() {
       if (result?.error) {
         setError("Invalid credentials");
       } else {
-        router.push("/"); // Pemilihan role
+        router.push("/profile-step/role?message=Login successful"); // Next ke profile step
       }
     } catch {
       setError("Something went wrong");
