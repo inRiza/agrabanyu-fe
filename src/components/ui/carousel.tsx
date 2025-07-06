@@ -77,7 +77,7 @@ export default function Carousel({
 }: CarouselProps): JSX.Element {
   const containerPadding = 16;
   const itemWidth = baseWidth - containerPadding * 2;
-  const itemHeight = round ? itemWidth : itemWidth * 0.6; // ✅ Tinggi eksplisit jika non-round
+  const itemHeight = round ? itemWidth : itemWidth * 0.6;
   const trackItemOffset = itemWidth + GAP;
 
   const carouselItems = loop ? [...items, items[0]] : items;
@@ -211,7 +211,7 @@ export default function Carousel({
               } overflow-hidden cursor-grab active:cursor-grabbing`}
               style={{
                 width: itemWidth,
-                height: itemHeight, // ✅ pakai itemHeigh
+                height: itemHeight,
                 rotateY: rotateY,
                 ...(round && { borderRadius: "50%" }),
               }}
