@@ -12,10 +12,8 @@ import {
 } from "react-icons/fi";
 
 export interface CarouselItem {
-  title: string;
-  description: string;
   id: number;
-  icon: React.ReactNode;
+  image?: string;
 }
 
 export interface CarouselProps {
@@ -30,35 +28,16 @@ export interface CarouselProps {
 
 const DEFAULT_ITEMS: CarouselItem[] = [
   {
-    title: "Text Animations",
-    description: "Cool text animations for your projects.",
     id: 1,
-    icon: <FiFileText className="h-[24px] w-[24px] text-white" />,
+    image: "/landing-page/farm_commodity.png"
   },
   {
-    title: "Animations",
-    description: "Smooth animations for your projects.",
     id: 2,
-    icon: <FiCircle className="h-[24px] w-[24px] text-white" />,
+    image: "/landing-page/marine_commodity.png"
   },
   {
-    title: "Components",
-    description: "Reusable components for your projects.",
-    id: 3,
-    icon: <FiLayers className="h-[24px] w-[24px] text-white" />,
-  },
-  {
-    title: "Backgrounds",
-    description: "Beautiful backgrounds and patterns for your projects.",
-    id: 4,
-    icon: <FiLayout className="h-[24px] w-[24px] text-white" />,
-  },
-  {
-    title: "Common UI",
-    description: "Common UI components are coming soon!",
-    id: 5,
-    icon: <FiCode className="h-[24px] w-[24px] text-white" />,
-  },
+    id: 3
+  }
 ];
 
 const DRAG_BUFFER = 0;
@@ -214,13 +193,13 @@ export default function Carousel({
                 height: itemHeight, // ✅ pakai itemHeigh
                 rotateY: rotateY,
                 ...(round && { borderRadius: "50%" }),
+                backgroundImage: item.image ? `url('${item.image}')` : undefined,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
               }}
               transition={effectiveTransition}
             >
               <div className={`${round ? "p-0 m-0" : "mb-4 p-5"}`}>
-                <span className="flex h-[32px] w-[32px] items-center justify-center rounded-full bg-[#060010]">
-                  {item.icon}
-                </span>
               </div>
               <div className="p-5">
                 <div className="mb-1 font-black text-lg text-white">

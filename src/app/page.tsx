@@ -1,6 +1,8 @@
 import Hero from "@/landing-page/hero"
 import Introduce from '@/landing-page/introduce'
 import { Navbar } from "@/components/navbar/navbar"
+import Footer from "@/components/footer/footer"
+import Trusted from "@/landing-page/trusted"
 
 const Main = () => {
   return (
@@ -8,6 +10,8 @@ const Main = () => {
       <Navbar/>
       <Hero/>
       <Introduce/>
+      <Trusted/>
+      <Footer/>
     </div>
   )
 }
