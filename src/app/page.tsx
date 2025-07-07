@@ -6,14 +6,21 @@ import Trusted from "@/landing-page/trusted"
 
 const Main = () => {
   return (
-    <div className="guide-main min-h-screen bg-background">
-      <Navbar/>
-      <Hero/>
-      <Introduce/>
-      <Trusted/>
-      <Footer/>
-    </div>
-  )
-}
+    <>
+      <div className="guide-main min-h-screen bg-background">
+        <Navbar />
+        <Hero />
+      </div>
+
+      <Introduce />
+
+      <div className="guide-main min-h-screen bg-background">
+        <Trusted />
+        <Footer />
+      </div>
+    </>
+  );
+};
+
 
 export default Main
