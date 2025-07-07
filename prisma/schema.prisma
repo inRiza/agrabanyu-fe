@@ -42,6 +42,8 @@ model User {
   password      String?
   emailVerified DateTime?
   image         String?
+  walletAddress String?
+  walletType    String?
   accounts      Account[]
   sessions      Session[]
   createdAt     DateTime  @default(now())

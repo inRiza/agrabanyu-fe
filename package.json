@@ -10,6 +10,10 @@
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.10.0",
+    "@dfinity/agent": "^0.15.6",
+    "@dfinity/auth-client": "^0.15.6",
+    "@dfinity/identity": "^0.15.6",
+    "@dfinity/principal": "^0.15.6",
     "@prisma/client": "^6.11.1",
     "@radix-ui/react-label": "^2.1.7",
     "@react-three/fiber": "^9.2.0",
