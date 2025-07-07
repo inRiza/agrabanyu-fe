@@ -1,6 +1,6 @@
 'use client';
 import { motion } from "framer-motion";
-import Carousel from "@/components/ui/carousel";
+// import Carousel from "@/components/ui/carousel";
 
 const Introduce = () => {
   return (
@@ -46,14 +46,14 @@ const Introduce = () => {
                 damping: 20,
             }}
         >
-            <Carousel
+            {/* <Carousel
                 baseWidth={1000}
                 autoplay={true}
                 autoplayDelay={3000}
                 pauseOnHover={true}
                 loop={true}
                 round={false}
-            />
+            /> */}
         </motion.div>
     </div>
   )

@@ -1,6 +1,7 @@
 import Hero from "@/landing-page/hero"
-import Introduce from '@/landing-page/introduce'
 import { Navbar } from "@/components/navbar/navbar"
+import Introduce from '@/landing-page/introduce'
+import Trusted from "@/landing-page/trusted"
 
 const Main = () => {
   return (
@@ -11,6 +12,9 @@ const Main = () => {
       </section>
       <section id="introduce">
         <Introduce/>
+      </section>
+      <section id="trusted">
+        <Trusted/>
       </section>
     </div>
   )
