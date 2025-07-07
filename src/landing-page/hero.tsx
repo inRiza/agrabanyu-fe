@@ -23,7 +23,7 @@ const Hero = () => {
         <div className="flex gap-6 relative z-20 mt-10">
             <button 
                 onClick={handleGetStarted}
-                className="button-main hover-bg-glow hover:-translate-y-1 capitalize font-semibold px-10 py-3 cursor-pointer"
+                className="capitalize px-10 py-3 group/btn relative block h-12 rounded-md bg-gradient-to-br from-green-main to-green-700 font-medium text-white shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] hover:-translate-y-1 transition-all duration-500 cursor-pointer"
             >
                 get started
             </button>

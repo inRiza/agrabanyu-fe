@@ -15,7 +15,7 @@ export function Navbar() {
                 <a href="" className="hover:bg-black hover:rounded-lg hover:text-white px-4 py-2">Home</a>
                 <a href="" className="hover:bg-black hover:rounded-lg hover:text-white px-4 py-2">About</a>
                 <a href="" className="hover:bg-black hover:rounded-lg hover:text-white px-4 py-2">Contact</a>
-                <button onClick={handleLogin} className="button-main px-4 py-2 font-light hover-bg-glow cursor-pointer">Login</button>
+                <button onClick={handleLogin} className="capitalize px-4 py-2 group/btn relative block rounded-lg bg-transparent border-1 border-grey-main font-medium text-white hover:-translate-y-1 transition-all duration-500 cursor-pointer">Explore Now</button>
             </div>
          </div>
     </div>
