@@ -148,7 +148,7 @@ body {
   }
 
   .title {
-    @apply text-6xl font-bold;
+    @apply text-7xl font-black;
   }
 
   .subtitle {
