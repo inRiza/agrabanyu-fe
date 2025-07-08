@@ -105,7 +105,7 @@ export default function WalletPage() {
         if (isConnected && walletAddress) {
             const saved = await saveWalletToDatabase();
             if (saved) {
-                router.push(`/profile-step/setup?role=${role}&wallet=${walletAddress}`);
+                router.push(`/profile-step/setup/${role}?role=${role}&wallet=${walletAddress}`);
             }
         }
     };
