@@ -14,10 +14,10 @@ const Hero = () => {
   return (
     <div className="guide-main h-screen flex flex-col items-center justify-center">
         <Spotlight></Spotlight>
-        <p className="title uppercase text-center px-50 shiny-text relative z-10">
+        <p className="title uppercase text-center px-30 relative z-10">
             invest on land or water with ease and secure
         </p>
-        <p className="mt-5 subtitle capitalize text-center px-50 shiny-text relative z-10">
+        <p className="mt-5 subtitle capitalize text-center px-50 relative z-10">
             invest easily using any cryptocurrency and helping you to secure your transaction using web3 technology
         </p>
         <div className="flex gap-6 relative z-20 mt-10">
@@ -43,7 +43,7 @@ const Hero = () => {
             priority
             quality={100}
         />
-        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-80 bg-gradient-to-t from-[#0a0a0a] to-transparent z-10"></div>
     </div>
   )
 }
