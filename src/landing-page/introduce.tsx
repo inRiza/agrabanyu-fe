@@ -56,7 +56,7 @@ const Introduce = () => {
             alt="farmer"
             width={400}
             height={400}
-            className="mb-10 absolute right-0 grayscale opacity-40 rounded-lg z-0"
+            className="mb-10 absolute right-0 grayscale hover:grayscale-0 transition-all duration-500 opacity-40 rounded-lg z-0"
         />
         <div className="flex gap-34 relative z-10">
             <div className="flex flex-col gap-4">
