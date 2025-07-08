@@ -1,7 +1,8 @@
-import Hero from "@/landing-page/hero"
-import { Navbar } from "@/components/navbar/navbar"
-import Introduce from '@/landing-page/introduce'
-import Trusted from "@/landing-page/trusted"
+import { Navbar } from "@/components/navbar/navbar";
+import Hero from "@/landing-page/hero";
+import Introduce from "@/landing-page/introduce";
+import Goals from "@/landing-page/goals";
+import Trusted from "@/landing-page/trusted";
 
 const Main = () => {
   return (
@@ -13,9 +14,12 @@ const Main = () => {
       <section id="introduce">
         <Introduce/>
       </section>
-      <section id="trusted">
-        <Trusted/>
+      <section id="goals">
+        <Goals/>
       </section>
+      {/* <section id="trusted">
+        <Trusted/>
+      </section> */}
     </div>
   )
 }
