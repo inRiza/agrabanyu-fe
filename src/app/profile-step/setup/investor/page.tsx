@@ -1,25 +1,29 @@
 "use client";
-import { usePathname, useSearchParams, useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
 import { ProgressSteps } from "@/components/ui/progress-steps";
 import { profileSteps } from "@/constants/profile-steps";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+// import { normalize } from "path";
 
 export default function ProfileSetupInvestor() {
   const router = useRouter();
 
   const pathname = usePathname();
-  const searchParams = useSearchParams();
+  // const searchParams = useSearchParams();
 
   const currentStepId = pathname.split("/").pop();
-  const role = searchParams.get("role");
-  const wallet = searchParams.get("wallet");
+  // const role = searchParams.get("role");
+  // const wallet = searchParams.get("wallet");
+
+  let normalizedStepId = currentStepId;
+  if (currentStepId === "investor") normalizedStepId = "setup";
 
   const steps = profileSteps.map(( step, idx ) => ({
     ...step,
-    isCompleted: profileSteps.findIndex(s => s.id === currentStepId) > idx,
-    isActive: step.id === currentStepId,
+    isCompleted: profileSteps.findIndex(s => s.id === normalizedStepId) > idx,
+    isActive: step.id === normalizedStepId,
   }));
 
   const [name, setName] = useState("");
@@ -74,7 +78,7 @@ export default function ProfileSetupInvestor() {
       if (!res.ok) throw new Error("Failed to save profile.");
 
       router.push("/dashboard"); // ganti sesuai kebutuhan
-    } catch (err) {
+    } catch {
       setError("Failed to save profile. Please try again.");
     } finally {
       setSaving(false);
