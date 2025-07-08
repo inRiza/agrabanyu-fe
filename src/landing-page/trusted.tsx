@@ -26,8 +26,7 @@ const Trusted = () => {
   const activeData = isi.find((t) => t.id === active)!;
 
   return (
-    <section className="mt-20">
-      <div className="flex flex-col gap-2 items-center">
+    <div className="flex flex-col gap-2 items-center">
 
         <div className="flex justify-center gap-4 mb-10">
           {isi.map((t) => (
@@ -65,8 +64,7 @@ const Trusted = () => {
             </div>
         </div>
         </div>
-      </div>
-    </section>
+    </div>
   );
 };
 
