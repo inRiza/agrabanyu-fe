@@ -73,7 +73,7 @@ export default function FarmerDashboardPage()  {
                 icon: user.image ? (
                   <img
                     src={user.image}
-                    className="h-7 w-7 shrink-0 rounded-full ml-4"
+                    className="h-7 w-7 shrink-0 rounded-full ml-4 mb-10"
                     width={50}
                     height={50}
                     alt="Avatar"
