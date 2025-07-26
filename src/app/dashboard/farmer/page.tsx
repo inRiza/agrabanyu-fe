@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "@/components/sidebar/sidebar";
 import {
     IconBrandTabler,
@@ -7,6 +7,43 @@ import {
     IconArrowLeft,
     IconAbacus,
 } from "@tabler/icons-react";
+import dynamic from "next/dynamic";
+import { feature } from "topojson-client"
+
+// Dynamically import Globe component to avoid SSR issues in Next.js
+const Globe = dynamic(() => import("react-globe.gl"), { ssr: false });
+
+// data for analytics
+const mockCommodityData = {
+  Indonesia: [
+    {
+      name: "Palm Oil",
+      image: "/images/palm-oil.jpg",
+      fluctuation: 5.2,
+    },
+    {
+      name: "Coffee",
+      image: "/images/coffee.jpg",
+      fluctuation: -2.7,
+    },
+  ],
+  Japan: [
+    {
+      name: "Rice",
+      image: "/images/rice.jpg",
+      fluctuation: 3.1,
+    },
+  ],
+};
+
+const mockInvestorData = {
+  Indonesia: [
+    { name: "AgroFund Asia", logo: "/images/investor1.png" },
+    { name: "Green Earth Capital", logo: "/images/investor2.png" },
+  ],
+  Japan: [{ name: "Nippon Agro", logo: "/images/investor3.png" }],
+};
+
 
 export default function FarmerDashboardPage()  {
   const links = [
@@ -50,6 +87,25 @@ export default function FarmerDashboardPage()  {
   const displayName = user.name || 'User';
   const initial = displayName.trim().charAt(0).toUpperCase();
 
+  // map components
+  const globeEl = useRef<any>(null);
+  const [countries, setCountries] = useState([]);
+  const [hoverD, setHoverD] = useState<any>();
+  const [clickedCountry, setClickedCountry] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("https://unpkg.com/world-atlas@2.0.2/countries-110m.json")
+      .then((res) => res.json())
+      .then((data) => {
+        const countries = feature(data, data.objects.countries).features;
+        setCountries(countries);
+      });
+  }, []);
+
+  // for analytics and list of investors
+  const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
+
+
   return (
     <div className="flex h-screen w-full">
       <Sidebar open={open} setOpen={setOpen}>
@@ -89,7 +145,88 @@ export default function FarmerDashboardPage()  {
         </SidebarBody>
       </Sidebar>
       {/* Main page content */}
-      <main className="flex-1 p-4">{/* ... */}</main>
+      <main className="flex-1 p-4">
+        <div className="flex w-full h-full transition-all duration-500">
+          {/* Globe Container */}
+          <div
+            className={`transition-all duration-500 relative ${
+              selectedCountry ? "w-0.5" : "w-full"
+            } h-[600px]`} // or h-screen, set as needed
+          >
+            <div className="w-0.5 h-full relative">
+              <Globe
+                ref={globeEl}
+                globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
+                backgroundColor="rgba(0,0,0,0)"
+                polygonsData={countries}
+                polygonAltitude={0.06}
+                polygonCapColor={(feat: any) =>
+                  clickedCountry === feat.properties.name
+                    ? "gold"
+                    : hoverD === feat
+                    ? "orange"
+                    : "rgba(255, 255, 255, 0.3)"
+                }
+                polygonSideColor={() => "rgba(0, 100, 0, 0.15)"}
+                polygonStrokeColor={() => "#111"}
+                onPolygonHover={setHoverD}
+                onPolygonClick={(feat: any) => {
+                  setClickedCountry(feat.properties.name);
+                  setSelectedCountry(feat.properties.name);
+                }}
+                polygonsTransitionDuration={300}
+              />
+            </div>
+          </div>
+
+          {/* Right Panel */}
+          <div
+            className={`transition-all duration-500 overflow-y-auto bg-white rounded-lg shadow-md p-4 ${
+              selectedCountry ? "w-1/2 opacity-100 ml-4" : "w-0 opacity-0"
+            }`}
+          >
+            {selectedCountry && (
+              <>
+                <h2 className="text-xl font-semibold mb-2">{selectedCountry} Overview</h2>
+
+                {/* Commodity Analytics */}
+                <div className="mb-6">
+                  <h3 className="text-lg font-semibold mb-2">📈 Commodity Analytics</h3>
+                  <div className="space-y-4">
+                    {(mockCommodityData[selectedCountry as keyof typeof mockCommodityData] || []).map((commodity, i) => (
+                      <div key={i} className="flex items-center space-x-3">
+                        <img src={commodity.image} alt={commodity.name} className="w-12 h-12 rounded object-cover" />
+                        <div>
+                          <p className="font-medium">{commodity.name}</p>
+                          <p className={commodity.fluctuation >= 0 ? "text-green-600" : "text-red-500"}>
+                            {commodity.fluctuation >= 0 ? "+" : ""}
+                            {commodity.fluctuation}% (last 2 months)
+                          </p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Investors */}
+                <div>
+                  <h3 className="text-lg font-semibold mb-2">💼 Investors</h3>
+                  <div className="space-y-3">
+                    {(mockInvestorData[selectedCountry as keyof typeof mockInvestorData] || []).map((investor, i) => (
+                      <div key={i} className="flex items-center space-x-3">
+                        <img src={investor.logo} alt={investor.name} className="w-10 h-10 rounded-full object-cover" />
+                        <p className="font-medium">{investor.name}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      </main>
+
+
     </div>
   );
 }
