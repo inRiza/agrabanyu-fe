@@ -89,6 +89,8 @@ export default function FarmerDashboardPage()  {
 
   // map components
   const globeEl = useRef<any>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [globeSize, setGlobeSize] = useState({ width: 800, height: 600 });
   const [countries, setCountries] = useState([]);
   const [hoverD, setHoverD] = useState<any>();
   const [clickedCountry, setClickedCountry] = useState<string | null>(null);
@@ -101,6 +103,29 @@ export default function FarmerDashboardPage()  {
         setCountries(countries);
       });
   }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const observer = new ResizeObserver(([entry]) => {
+      const { width, height } = entry.contentRect;
+      setGlobeSize({ width, height });
+    });
+
+    observer.observe(container);
+
+    return () => observer.disconnect();
+  }, []);
+
+
+  useEffect(() => {
+    if (globeEl) {
+      globeEl.current.width(globeSize.width);
+      globeEl.current.height(globeSize.height);
+    }
+  }, [globeSize]);
+
 
   // for analytics and list of investors
   const [selectedCountry, setSelectedCountry] = useState<string | null>(null);
@@ -146,16 +171,18 @@ export default function FarmerDashboardPage()  {
       </Sidebar>
       {/* Main page content */}
       <main className="flex-1 p-4">
-        <div className="flex w-full h-full transition-all duration-500">
+        <div className="flex w-full h-screen transition-all duration-500">
+          
           {/* Globe Container */}
           <div
-            className={`transition-all duration-500 relative ${
-              selectedCountry ? "w-0.5" : "w-full"
-            } h-[600px]`} // or h-screen, set as needed
+            className={`transition-all duration-500 relative h-full ${
+              selectedCountry ? "w-1/2" : "w-full"
+            }`} ref={containerRef}
           >
-            <div className="w-0.5 h-full relative">
               <Globe
                 ref={globeEl}
+                width={globeSize.width}
+                height={globeSize.height}
                 globeImageUrl="//unpkg.com/three-globe/example/img/earth-blue-marble.jpg"
                 backgroundColor="rgba(0,0,0,0)"
                 polygonsData={countries}
@@ -176,13 +203,12 @@ export default function FarmerDashboardPage()  {
                 }}
                 polygonsTransitionDuration={300}
               />
-            </div>
           </div>
 
           {/* Right Panel */}
           <div
             className={`transition-all duration-500 overflow-y-auto bg-white rounded-lg shadow-md p-4 ${
-              selectedCountry ? "w-1/2 opacity-100 ml-4" : "w-0 opacity-0"
+              selectedCountry ? "w-1/2 opacity-100 translate-x-0" : "w-0 opacity-0 translate-x-full"
             }`}
           >
             {selectedCountry && (
@@ -225,7 +251,6 @@ export default function FarmerDashboardPage()  {
           </div>
         </div>
       </main>
-
 
     </div>
   );
